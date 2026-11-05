@@ -2,7 +2,7 @@
 
 Project proposals, samples, and reference material for QHPC members. Use this repository to explore ideas, assess their feasibility, and prepare to build them together. Projects focus on learning and preparation for SC27, ISC, and other supercomputing competitions, including benchmarking, scientific applications, and useful software.
 
-The repository is currently in the proposal stage; no project ideas have been added yet.
+The repository is currently in the proposal stage; browse the [project ideas](proposals/README.md) to get started.
 
 ## Projects and resources
 
