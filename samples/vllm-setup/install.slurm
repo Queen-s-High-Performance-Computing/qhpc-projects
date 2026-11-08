@@ -6,14 +6,13 @@
 #SBATCH --time=00:30:00
 #SBATCH --output=vllm-install-%j.out
 
-set -euo pipefail
-
 # Use the cluster Python and its glibc rather than a uv-managed Python.
 module --force purge
 module load StdEnv/2023 python/3.11.5
-command -v uv >/dev/null
-python --version
-python -c 'import os; print(os.confstr("CS_GNU_LIBC_VERSION"))'
+# python --version
+# python -c 'import os; print(os.confstr("CS_GNU_LIBC_VERSION"))'
+
+# LOG CUDA VERSION and driver version
 
 # An optional first argument selects a different, new environment directory.
 venv_dir="${1:-$HOME/.venvs/qhpc-vllm}"
@@ -27,6 +26,9 @@ uv venv --python "$(command -v python)" "$venv_dir"
 # The prebuilt llguidance wheel avoids Rust installation and compilation.
 uv pip install --python "$venv_dir/bin/python" --only-binary llguidance \
     "llguidance==1.7.6" "vllm==0.33.0"
+
+
+# Test for vllm
 uv pip check --python "$venv_dir/bin/python"
 "$venv_dir/bin/python" - <<'PY'
 from importlib.metadata import version
@@ -36,4 +38,4 @@ print("llguidance imported successfully:", version("llguidance"))
 print("vLLM installed:", version("vllm"))
 PY
 
-printf '\nEnvironment ready: %s\n' "$venv_dir"
+echo "Environment ready: $venv_dir"

@@ -6,9 +6,12 @@ Drafted by: Anthony Botticchio
 
 How does concurrent generation affect vLLM throughput, responsiveness, and KV-cache pressure? This project develops practical inference and benchmarking skills for QHPC members. Please see vLLM documentation for a basic understanding before continuing: https://vllm.ai
 
+
 ## Goals and scope
 
 Build a simple serving interface and finish one reproducible experiment with one model on one machine. Larger models, shared-prefix experiments, comparisons with other engines, and source-code investigation are later extensions. Multi-GPU deployment and an always-on public service are outside the first version.
+
+Always-on service is likely not in the scope of our work unless we had a node completely reserved for ourselves. Unfortunately, we are limited by the time spent on the frnt201 L4 GPUs.
 
 ## Proposed approach
 
